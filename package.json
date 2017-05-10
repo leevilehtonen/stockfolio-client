@@ -1,0 +1,32 @@
+{
+  "name": "stockfolio-client",
+  "version": "0.1.0",
+  "description": "Node web app for managing your stock portfolio (client)",
+  "private": true,
+  "dependencies": {
+    "react": "*",
+    "react-dom": "*"
+  },
+  "devDependencies": {
+    "react-scripts": "*"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leevilehtonen/stockfolio-client.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Leevi Lehtonen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leevilehtonen/stockfolio-client/issues"
+  }
+  
+}
