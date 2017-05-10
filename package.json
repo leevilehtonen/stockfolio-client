@@ -4,8 +4,18 @@
   "description": "Node web app for managing your stock portfolio (client)",
   "private": true,
   "dependencies": {
+    "bootstrap": "^4.0.0-alpha.6",
+    "prop-types": "*",
     "react": "*",
-    "react-dom": "*"
+    "react-dom": "*",
+    "react-redux": "*",
+    "react-router": "*",
+    "react-router-redux": "*",
+    "react-addons-transition-group": "*",
+    "react-addons-css-transition-group": "*",
+    "reactstrap": "*",
+    "redux": "*",
+    "redux-thunk": "*"
   },
   "devDependencies": {
     "react-scripts": "*"
@@ -28,5 +38,4 @@
   "bugs": {
     "url": "https://github.com/leevilehtonen/stockfolio-client/issues"
   }
-  
 }
