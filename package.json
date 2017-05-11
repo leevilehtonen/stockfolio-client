@@ -5,16 +5,18 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.0.0-alpha.6",
+    "history": "^4.6.1",
     "prop-types": "*",
     "react": "*",
+    "react-addons-css-transition-group": "*",
+    "react-addons-transition-group": "*",
     "react-dom": "*",
     "react-redux": "*",
-    "react-router": "*",
-    "react-router-redux": "*",
-    "react-addons-transition-group": "*",
-    "react-addons-css-transition-group": "*",
+    "react-router-dom": "*",
+    "react-router-redux": "^5.0.0-alpha.6",
     "reactstrap": "*",
     "redux": "*",
+    "redux-logger": "*",
     "redux-thunk": "*"
   },
   "devDependencies": {
