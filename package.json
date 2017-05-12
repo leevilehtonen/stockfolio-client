@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.0.0-alpha.6",
+    "jwt-decode": "*",
     "history": "^4.6.1",
     "prop-types": "*",
     "react": "*",
@@ -17,7 +18,8 @@
     "reactstrap": "*",
     "redux": "*",
     "redux-logger": "*",
-    "redux-thunk": "*"
+    "redux-thunk": "*",
+    "validator": "*"
   },
   "devDependencies": {
     "react-scripts": "*"

@@ -1,45 +1,65 @@
 import * as types from '../actions/actionTypes';
+import jwtDecode from 'jwt-decode';
+
 
 const authReducer = (state = {
+    token: null,
+    userName: null,
     isFetching: false,
-    isAuthenticated: localStorage.getItem('id_token') ? true : false
+    isAuthenticated: false,
+    statusText: null,
+
 }, action) => {
     switch (action.type) {
         case types.LOGIN_REQUEST:
             return Object.assign({}, state, {
                 isFetching: true,
                 isAuthenticated: false,
-                user: action.credentials
+                statusText: null
             })
         case types.LOGIN_SUCCESS:
             return Object.assign({}, state, {
                 isFetching: false,
                 isAuthenticated: true,
-                errorMessage: ''
+                statusText: 'You have been logged in',
+                token: action.id_token,
+                userName: jwtDecode(action.id_token).name
+
             })
         case types.LOGIN_FAILURE:
             return Object.assign({}, state, {
                 isFetching: false,
                 isAuthenticated: false,
-                errorMessage: action.message
+                token: null,
+                userName: null,
+                statusText: action.message,
             })
 
         case types.LOGOUT_REQUEST:
             return Object.assign({}, state, {
-                isFetching: true,
                 isAuthenticated: false,
+                token: null,
+                userName: null,
+                statusText: 'You have been logged out'
             })
-        case types.LOGOUT_SUCCESS:
+
+        case types.REGISTER_REQUEST:
             return Object.assign({}, state, {
-                isFetching: false,
-                isAuthenticated: false,
+                isFetching:true,
+                statusText: null
             })
-        case types.LOGOUT_FAILURE:
+        case types.REGISTER_SUCCESS:
             return Object.assign({}, state, {
-                isFetching: false,
-                isAuthenticated: false,
-                errorMessage: action.message
+                isFetching:false,
+                statusText: 'You have been registered'
             })
+        case types.REGISTER_FAILURE:
+            return Object.assign({}, state, {
+                isFetching:false,
+                statusText: action.message
+            })
+
+
 
         default:
             return state;

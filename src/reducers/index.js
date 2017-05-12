@@ -3,8 +3,8 @@ import { routerReducer } from 'react-router-redux';
 import authReducer from './authReducer';
 
 const stockfolioApp = combineReducers({
-    authReducer,
-    routerReducer
+    auth:authReducer,
+    router:routerReducer
 });
 
 export default stockfolioApp;

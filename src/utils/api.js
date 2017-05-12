@@ -15,5 +15,9 @@ const postConfig = (body) => ({
 });
 
 export function loginApi(user) {
-    return fetch('http://localhost:3001/api/users/authenticate', params);
+    return fetch('http://localhost:3001/api/users/authenticate', postConfig(user));
+}
+
+export function registerApi(user) {
+    return fetch('http://localhost:3001/api/users/register', postConfig(user));
 }

@@ -1,5 +1,57 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+  padding-top: 50px;
+  background: #252830
 }
+.app-title {
+  font-size: 2rem;
+}
+
+.form-control:disabled, .form-control:focus, .form-control:active, .form-control, .form-control[readonly] {
+
+  background: #636c72;
+}
+.login-form {
+  width: 100%;
+}
+
+.text-white {
+  color: #ccc;
+}
+
+.form-control::-webkit-input-placeholder { color: #ccc; }
+.form-control:-moz-placeholder { color: #ccc; }
+.form-control::-moz-placeholder { color: #ccc; }
+.form-control:-ms-input-placeholder { color: #ccc; }
+
+
+
+.nav-pills > li > a:link, .nav-pills  >li>a:visited {
+  color: #ccc;
+}
+
+.nav-pills > li > a:focus, .nav-pills  >li>a:hover {
+  color: #fff;
+}
+.sidebar {
+  position: absolute;
+  left: 0;
+  z-index: 1000;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.sidebar {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.sidebar .nav-item {
+  width: 100%;
+}
+
+.sidebar .nav-item + .nav-item {
+  margin-left: 0;
+}
+
+
+
