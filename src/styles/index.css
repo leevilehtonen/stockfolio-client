@@ -10,7 +10,7 @@ body {
 
   background: #636c72;
 }
-.login-form {
+.login-form, .register-form {
   width: 100%;
 }
 

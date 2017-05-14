@@ -1,5 +1,7 @@
 import * as types from './actionTypes';
+import { history } from '../';
 import { loginApi, registerApi } from '../utils/api';
+import { requestMessage} from './msgActions';
 
 export const requestLogin = () => {
     return {
@@ -34,6 +36,8 @@ export function loginUser(user) {
             .then((res) => {
                 if (res.success) {
                     dispatch(receiveLogin(res.token));
+                    dispatch(requestMessage("You have succesfully logged in.", "success"))
+                    history.push('/dashboad');
                 } else {
                     dispatch(loginError(res.msg));
                 }
@@ -47,7 +51,9 @@ export function loginUser(user) {
 
 export function logoutUser() {
     return (dispatch) => {
-        dispatch(logoutUser())
+        dispatch(logoutUser());
+        history.push('/');
+
     }
 }
 
@@ -77,12 +83,15 @@ export function registerUser(user) {
             .then((res) => {
                 if (res.success) {
                     dispatch(receiveRegister());
+                    history.push('/login');
+
                 } else {
                     dispatch(registerError(res.msg));
                 }
             })
             .catch((err) => {
-                dispatch(registerError('Unauthorized'));
+                dispatch(registerError('Unauthorized: unknown error'));
             })
     }
 }
+

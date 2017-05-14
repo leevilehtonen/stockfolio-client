@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { registerUser } from '../actions/authActions';
-import RegisterPage from '../components/Pages/RegisterPage';
+import { loginUser } from '../actions/authActions';
+import LoginPage from '../components/Pages/LoginPage';
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -11,10 +11,10 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        registerUser: (user) => {
-            dispatch(registerUser(user));
+        loginUser: (user) => {
+            dispatch(loginUser(user));
         }
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterPage);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

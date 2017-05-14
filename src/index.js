@@ -14,7 +14,7 @@ const preloadedState = {
 
 }
 
-let history = createHistory();
+export const history = createHistory();
 let store = configureStore(preloadedState,history);
 let rootElement = document.getElementById('root');
 

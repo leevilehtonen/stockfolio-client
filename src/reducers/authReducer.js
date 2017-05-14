@@ -1,5 +1,6 @@
 import * as types from '../actions/actionTypes';
 import jwtDecode from 'jwt-decode';
+import { defaultLinks } from '../utils/links';
 
 
 const authReducer = (state = {
@@ -7,7 +8,7 @@ const authReducer = (state = {
     userName: null,
     isFetching: false,
     isAuthenticated: false,
-    statusText: null,
+    links: defaultLinks
 
 }, action) => {
     switch (action.type) {
@@ -15,13 +16,11 @@ const authReducer = (state = {
             return Object.assign({}, state, {
                 isFetching: true,
                 isAuthenticated: false,
-                statusText: null
             })
         case types.LOGIN_SUCCESS:
             return Object.assign({}, state, {
                 isFetching: false,
                 isAuthenticated: true,
-                statusText: 'You have been logged in',
                 token: action.id_token,
                 userName: jwtDecode(action.id_token).name
 
@@ -32,7 +31,6 @@ const authReducer = (state = {
                 isAuthenticated: false,
                 token: null,
                 userName: null,
-                statusText: action.message,
             })
 
         case types.LOGOUT_REQUEST:
@@ -40,27 +38,20 @@ const authReducer = (state = {
                 isAuthenticated: false,
                 token: null,
                 userName: null,
-                statusText: 'You have been logged out'
             })
 
         case types.REGISTER_REQUEST:
             return Object.assign({}, state, {
                 isFetching:true,
-                statusText: null
             })
         case types.REGISTER_SUCCESS:
             return Object.assign({}, state, {
                 isFetching:false,
-                statusText: 'You have been registered'
             })
         case types.REGISTER_FAILURE:
             return Object.assign({}, state, {
                 isFetching:false,
-                statusText: action.message
             })
-
-
-
         default:
             return state;
     }

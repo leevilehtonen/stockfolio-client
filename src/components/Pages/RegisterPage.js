@@ -36,7 +36,7 @@ class RegisterPage extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange(e) {
+    handleChange = (e) => {
 
         if (e.target.name === 'email') {
             this.setState({ email: e.target.value }, () => {
@@ -48,11 +48,8 @@ class RegisterPage extends Component {
             });
         } else if (e.target.name === 'username') {
             this.setState({ username: e.target.value }, () => {
-                let val = (
-                    validator.isLength(this.state.username, { min: 5, max: 32 }) &&
-                    validator.isAscii(this.state.username)
-                );
-                this.setState({ usernameValid: val });
+
+                this.setState({ usernameValid: validator.isLength(this.state.username, { min: 5, max: 32 }) });
             });
         } else if (e.target.name === 'password') {
             this.setState({ password: e.target.value }, () => {
@@ -70,7 +67,7 @@ class RegisterPage extends Component {
     handleBlur = (field) => (e) => {
         this.setState({ [field + "Touched"]: true });
     }
-    handleSubmit(e) {
+    handleSubmit = (e) => {
         e.preventDefault();
         const user = {
             email: this.state.email,
@@ -87,7 +84,7 @@ class RegisterPage extends Component {
         return (
 
             <div>
-                <Form onSubmit={this.handleSubmit} className="login-form">
+                <Form onSubmit={this.handleSubmit} className="register-form">
 
                     <FormGroup color={(!this.state.emailValid && this.state.emailTouched) ? "danger" : ""} className="text-white">
                         <Label for="emailInput">Email</Label>
