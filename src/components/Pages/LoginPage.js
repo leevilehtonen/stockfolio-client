@@ -3,21 +3,22 @@ import PropTypes from 'prop-types';
 import validator from 'validator';
 import { Button, Form, FormGroup, Label, Input, FormText, FormFeedback } from 'reactstrap';
 
+const intialState = {
+    username: '',
+    password: '',
+
+    usernameValid: false,
+    passwordValid: false,
+
+    usernameTouched: false,
+    passwordTouched: false
+}
+
 class LoginPage extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            username: '',
-            password: '',
-
-            usernameValid: false,
-            passwordValid: false,
-
-            usernameTouched: false,
-            passwordTouched: false
-
-        }
+        this.state = Object.assign({}, intialState);
         this.handleChange = this.handleChange.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -45,6 +46,7 @@ class LoginPage extends Component {
             password: this.state.password
         }
         this.props.loginUser(user);
+        this.setState(Object.assign({}, intialState));
     }
 
 
@@ -71,7 +73,7 @@ class LoginPage extends Component {
                         disabled={!(
                             this.state.usernameValid &&
                             this.state.usernameTouched &&
-                            this.state.passwordValid                        )} >Login</Button>
+                            this.state.passwordValid)} >Login</Button>
                 </Form>
             </div>
         );

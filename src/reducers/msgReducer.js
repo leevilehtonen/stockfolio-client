@@ -6,11 +6,18 @@ const msgReducer = (state = {
     color: null
 }, action) => {
     switch (action.type) {
-        case types.REQUEST_MESSAGE:
+        case types.REQUEST_SUCCESS_MESSAGE:
             return Object.assign({}, state, {
                 shouldSendMessage: true,
                 msg: action.msg,
-                color: action.color
+                color: 'success'
+            })
+
+        case types.REQUEST_ERROR_MESSAGE:
+            return Object.assign({}, state, {
+                shouldSendMessage: true,
+                msg: action.msg,
+                color: 'error'
             })
 
         case types.RECIEVE_MESSAGE:

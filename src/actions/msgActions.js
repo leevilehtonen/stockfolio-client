@@ -1,11 +1,17 @@
 import * as types from './actionTypes';
 
 
-export const requestMessage = (msg, color) => {
+export const requestSuccessMessage = (msg) => {
     return {
-        type: types.REQUEST_MESSAGE,
+        type: types.REQUEST_SUCCESS_MESSAGE,
         msg : msg,
-        color: color
+    }
+}
+
+export const requestErrorMessage = (msg) => {
+    return {
+        type: types.REQUEST_ERROR_MESSAGE,
+        msg : msg,
     }
 }
 

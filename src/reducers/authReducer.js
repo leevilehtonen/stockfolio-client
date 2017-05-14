@@ -1,6 +1,6 @@
 import * as types from '../actions/actionTypes';
 import jwtDecode from 'jwt-decode';
-import { defaultLinks } from '../utils/links';
+import { defaultLinks, authLinks } from '../utils/links';
 
 
 const authReducer = (state = {
@@ -8,8 +8,6 @@ const authReducer = (state = {
     userName: null,
     isFetching: false,
     isAuthenticated: false,
-    links: defaultLinks
-
 }, action) => {
     switch (action.type) {
         case types.LOGIN_REQUEST:
@@ -22,8 +20,7 @@ const authReducer = (state = {
                 isFetching: false,
                 isAuthenticated: true,
                 token: action.id_token,
-                userName: jwtDecode(action.id_token).name
-
+                userName: jwtDecode(action.id_token).name,
             })
         case types.LOGIN_FAILURE:
             return Object.assign({}, state, {
@@ -42,16 +39,30 @@ const authReducer = (state = {
 
         case types.REGISTER_REQUEST:
             return Object.assign({}, state, {
-                isFetching:true,
+                isFetching: true,
             })
         case types.REGISTER_SUCCESS:
             return Object.assign({}, state, {
-                isFetching:false,
+                isFetching: false,
             })
         case types.REGISTER_FAILURE:
             return Object.assign({}, state, {
-                isFetching:false,
+                isFetching: false,
             })
+
+        case types.AUTH_FROM_TOKEN:
+            return Object.assign({}, state, {
+                isAuthenticated: true,
+                token: action.id_token,
+                userName: jwtDecode(action.id_token).name,
+            })
+        case types.RESET_AUTH:
+            return Object.assign({}, state, {
+                isAuthenticated: false,
+                token: null,
+                userName: null,
+            })
+
         default:
             return state;
     }

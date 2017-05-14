@@ -3,34 +3,32 @@ import PropTypes from 'prop-types';
 import validator from 'validator';
 import { Button, Form, FormGroup, Label, Input, FormText, FormFeedback } from 'reactstrap';
 
+const initialState = {
+    email: '',
+    name: '',
+    username: '',
+    password: '',
+    passwordRepeat: '',
+
+    emailValid: false,
+    nameValid: false,
+    usernameValid: false,
+    passwordValid: false,
+    passMatch: false,
+
+    emailTouched: false,
+    nameTouched: false,
+    usernameTouched: false,
+    passwordTouched: false,
+    passwordRepeatTouched: false
+}
 
 class RegisterPage extends Component {
 
     constructor(props) {
         super(props);
 
-        this.state = {
-            email: '',
-            name: '',
-            username: '',
-            password: '',
-            passwordRepeat: '',
-
-            emailValid: false,
-            nameValid: false,
-            usernameValid: false,
-            passwordValid: false,
-            passMatch: false,
-
-            emailTouched: false,
-            nameTouched: false,
-            usernameTouched: false,
-            passwordTouched: false,
-            passwordRepeatTouched: false
-
-
-
-        }
+        this.state = {initialState};
         this.handleChange = this.handleChange.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -76,8 +74,8 @@ class RegisterPage extends Component {
             password: this.state.password
         }
         this.props.registerUser(user);
+        this.setState(initialState);
     }
-
 
 
     render() {

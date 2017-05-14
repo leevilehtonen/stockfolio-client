@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
 
-class Private extends Component {
+
+
+class HomePage extends Component {
+constructor(props) {
+    super(props);
+}
+
     render() {
         return (
             <div>
-                SECRET
             </div>
         );
     }
+
+
+    
 }
 
-export default Private;
+export default HomePage;

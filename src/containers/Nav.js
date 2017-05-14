@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar';
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        items: state.auth.links,
+        items: state.main.links,
         location: state.router.location
     }
 }

@@ -1,8 +1,10 @@
 import fetch from 'isomorphic-fetch';
 
-const authorizedConfig = (token) => ({
+const authorizedConfig = (method, token) => ({
     headers: {
-        'Authorization': token
+        method: method,
+        'Authorization': token,
+        'Content-Type':'application/json'
     }
 });
 
@@ -20,4 +22,8 @@ export function loginApi(user) {
 
 export function registerApi(user) {
     return fetch('http://localhost:3001/api/users/register', postConfig(user));
+}
+
+export function validateToken(token) {
+    return fetch('http://localhost:3001/api/users/validate', authorizedConfig('GET', token));
 }

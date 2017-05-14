@@ -1,7 +1,8 @@
 import * as types from './actionTypes';
 import { history } from '../';
 import { loginApi, registerApi } from '../utils/api';
-import { requestMessage} from './msgActions';
+import { requestSuccessMessage, requestErrorMessage } from './msgActions';
+import { setAuthNav, setDefaultNav } from './mainActions';
 
 export const requestLogin = () => {
     return {
@@ -9,20 +10,22 @@ export const requestLogin = () => {
     }
 }
 export const receiveLogin = (token) => {
+    localStorage.setItem('id_token', token);
     return {
         type: types.LOGIN_SUCCESS,
         id_token: token
     }
 }
 
-export const loginError = (message) => {
+export const loginError = () => {
+    localStorage.removeItem('id_token');
     return {
         type: types.LOGIN_FAILURE,
-        message
     }
 }
 
 export const requestLogout = () => {
+    localStorage.removeItem('id_token');
     return {
         type: types.LOGOUT_REQUEST,
     }
@@ -36,14 +39,19 @@ export function loginUser(user) {
             .then((res) => {
                 if (res.success) {
                     dispatch(receiveLogin(res.token));
-                    dispatch(requestMessage("You have succesfully logged in.", "success"))
-                    history.push('/dashboad');
+                    dispatch(setAuthNav());
+                    dispatch(requestSuccessMessage("Logged in"))
+                    history.push('/user/stocks/dashboard');
                 } else {
-                    dispatch(loginError(res.msg));
+                    dispatch(loginError());
+                    dispatch(setDefaultNav());
+                    dispatch(requestErrorMessage(res.msg));
                 }
             })
             .catch((err) => {
-                dispatch(loginError('Unauthorized'));
+                dispatch(loginError());
+                dispatch(setDefaultNav());
+                dispatch(requestErrorMessage('Unknow error'))
             })
 
     }
@@ -68,10 +76,10 @@ export const receiveRegister = () => {
     }
 }
 
-export const registerError = (message) => {
+export const registerError = () => {
     return {
         type: types.REGISTER_FAILURE,
-        message
+
     }
 }
 
@@ -83,15 +91,32 @@ export function registerUser(user) {
             .then((res) => {
                 if (res.success) {
                     dispatch(receiveRegister());
+                    dispatch(requestSuccessMessage('You have registered'))
                     history.push('/login');
 
                 } else {
-                    dispatch(registerError(res.msg));
+                    dispatch(registerError());
+                    dispatch(requestErrorMessage(res.msg))
                 }
             })
             .catch((err) => {
-                dispatch(registerError('Unauthorized: unknown error'));
+                dispatch(registerError());
+                dispatch(requestErrorMessage('Unknown error'))
             })
+    }
+}
+
+export const authReset = () => {
+    return {
+        type: types.RESET_AUTH,
+    }
+}
+
+export const authFromToken = (token) => {
+    localStorage.setItem('id_token', token);
+    return {
+        type: types.AUTH_FROM_TOKEN,
+        id_token: token
     }
 }
 
