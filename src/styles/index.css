@@ -2,7 +2,7 @@ body {
   padding-top: 50px;
   background: #252830
 }
-hr {
+.hr-dark {
   background-color: #636c72;
 }
 
@@ -10,10 +10,20 @@ hr {
   font-size: 2rem;
 }
 
-.table thead > tr > th {
+.quote-view-table th {
+ border-top: 0;
+}
+
+.quote-view-table thead > tr > th {
+  border-bottom-width: 1px;
+  
+}
+
+.quote-result-table thead > tr > th {
   border-bottom-color: #636c72;
   border-bottom-width: 1px;
-  }
+  
+}
 
 
 .form-control:disabled, .form-control:focus, .form-control:active, .form-control, .form-control[readonly] {
@@ -28,11 +38,11 @@ hr {
   color: #ccc;
 }
 
-td{
+.quote-result-table-td{
   color:#ccc
 }
 
-th{
+.quote-result-table-th{
   color: #fff;
   font-weight: normal;
 }

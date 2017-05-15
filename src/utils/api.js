@@ -31,3 +31,9 @@ export function validateToken(token) {
 export function loadQuotes(query, token) {
     return fetch('http://localhost:3001/api/stocks/find?query=' + query, authorizedConfig('GET', token));
 }
+export function loadQuoteData(query, token) {
+    return fetch('http://localhost:3001/api/stocks/quote?query=' + query, authorizedConfig('GET', token));
+}
+export function loadQuoteDataHistory(query, time, token) {
+    return fetch('http://localhost:3001/api/stocks/quote/history?query=' + query + '&time=' +time, authorizedConfig('GET', token));
+}

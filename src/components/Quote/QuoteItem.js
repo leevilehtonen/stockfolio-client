@@ -2,16 +2,19 @@ import React from 'react';
 
 const QuoteItem = (props) => {
         return (
-            <tr>
-                <th scope="row">{props.number+1}</th>
-                <td>{props.symbol}</td>
-                <td>{props.name}</td>
-                <td>{props.type}</td>
-                <td>{props.se}</td>
-                <td>{props.cat}</td>
+            <tr onClick={handleClick}>
+                <th className='quote-result-table-th' scope="row">{props.number+1}</th>
+                <td className='quote-result-table-td'>{props.symbol}</td>
+                <td className='quote-result-table-td'>{props.name}</td>
+                <td className='quote-result-table-td'>{props.type}</td>
+                <td className='quote-result-table-td'>{props.se}</td>
+                <td className='quote-result-table-td'>{props.cat}</td>
             </tr>
         );
-    
+
+        function handleClick(e) {
+            props.openQuote(props.symbol);
+        }
 }
 
 export default QuoteItem;

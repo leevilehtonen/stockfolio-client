@@ -13,7 +13,7 @@
     "react-addons-css-transition-group": "*",
     "react-addons-transition-group": "*",
     "react-alert": "*",
-    "react-chartjs": "*",
+    "react-chartjs-2": "*",
     "react-dom": "*",
     "react-redux": "*",
     "react-router-dom": "*",
