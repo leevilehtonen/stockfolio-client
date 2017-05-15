@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import validator from 'validator';
 import { Button, Form, FormGroup, Label, Input, FormText, FormFeedback } from 'reactstrap';
+import {registerUser} from '../../actions/authActions';
+import { updateTitle } from '../../actions/mainActions';
 
 const initialState = {
     email: '',
@@ -32,6 +35,10 @@ class RegisterPage extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentWillMount() {
+        this.props.updateTitle('Register', 'MENU');
     }
 
     handleChange = (e) => {
@@ -137,4 +144,22 @@ RegisterPage.propTypes = {
     registerUser: PropTypes.func.isRequired,
 };
 
-export default RegisterPage;
+const mapStateToProps = (state, ownProps) => {
+    return {
+        isFetching: state.auth.isFetching,
+        statusText: state.auth.statusText
+    }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        registerUser: (user) => {
+            dispatch(registerUser(user));
+        },
+        updateTitle: (pageTitle, categoryTitle) => {
+            dispatch(updateTitle(pageTitle, categoryTitle));
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterPage);

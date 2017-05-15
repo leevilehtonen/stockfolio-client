@@ -17,3 +17,9 @@ export const RECIEVE_MESSAGE = 'RECIEVE_MESSAGE';
 export const SET_AUTH_NAV = 'SET_AUTH_NAV';
 export const SET_DEFAULT_NAV = 'SET_DEFAULT_NAV';
 
+export const UPDATE_TITLE = 'UPDATE_TITLE';
+
+export const REQUEST_QUOTES = 'REQUEST_QUOTES';
+export const RECIEVE_QUOTES = 'RECIEVE_QUOTES';
+export const RECIEVE_ERROR = 'RECIEVE_ERROR';
+ 

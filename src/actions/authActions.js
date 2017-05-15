@@ -2,7 +2,13 @@ import * as types from './actionTypes';
 import { history } from '../';
 import { loginApi, registerApi } from '../utils/api';
 import { requestSuccessMessage, requestErrorMessage } from './msgActions';
-import { setAuthNav, setDefaultNav } from './mainActions';
+import { setAuthNav, setDefaultNav, updateTitle } from './mainActions';
+
+export function redirect(path) {
+    return (dispatch) => {
+        history.push(path);
+    }
+}
 
 export const requestLogin = () => {
     return {
@@ -41,7 +47,8 @@ export function loginUser(user) {
                     dispatch(receiveLogin(res.token));
                     dispatch(setAuthNav());
                     dispatch(requestSuccessMessage("Logged in"))
-                    history.push('/user/stocks/dashboard');
+                    dispatch(redirect('/user/stocks/overview'));
+
                 } else {
                     dispatch(loginError());
                     dispatch(setDefaultNav());
@@ -61,7 +68,6 @@ export function logoutUser() {
     return (dispatch) => {
         dispatch(logoutUser());
         history.push('/');
-
     }
 }
 

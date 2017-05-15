@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import validator from 'validator';
 import { Button, Form, FormGroup, Label, Input, FormText, FormFeedback } from 'reactstrap';
+import { connect } from 'react-redux';
+import { loginUser } from '../../actions/authActions';
+import { updateTitle } from '../../actions/mainActions';
 
 const intialState = {
     username: '',
@@ -23,6 +26,11 @@ class LoginPage extends Component {
         this.handleBlur = this.handleBlur.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    componentWillMount() {
+        this.props.updateTitle('Login', 'MENU');
+    }
+
     handleChange = (e) => {
         if (e.target.name === 'username') {
             this.setState({ username: e.target.value }, () => {
@@ -84,4 +92,21 @@ LoginPage.propTypes = {
     loginUser: PropTypes.func.isRequired
 };
 
-export default LoginPage;
+const mapStateToProps = (state, ownProps) => {
+    return {
+        isFetching: state.auth.isFetching,
+    }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        loginUser: (user) => {
+            dispatch(loginUser(user));
+        },
+        updateTitle: (pageTitle, categoryTitle) => {
+            dispatch(updateTitle(pageTitle, categoryTitle));
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

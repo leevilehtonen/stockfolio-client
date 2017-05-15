@@ -27,3 +27,7 @@ export function registerApi(user) {
 export function validateToken(token) {
     return fetch('http://localhost:3001/api/users/validate', authorizedConfig('GET', token));
 }
+
+export function loadQuotes(query, token) {
+    return fetch('http://localhost:3001/api/stocks/find?query=' + query, authorizedConfig('GET', token));
+}

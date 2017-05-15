@@ -1,21 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Nav from '../containers/Nav';
+import Navbar from './Navbar';
 import Content from './Content';
 
 class Wrapper extends Component {
     render() {
         return (
             <div className="row">
-                <Nav />
+                <Navbar />
                 <Content />
             </div>
         );
     }
 }
-
-Wrapper.propTypes = {
-
-};
 
 export default Wrapper;

@@ -38,3 +38,11 @@ export const setDefaultNav = () => {
         type: types.SET_DEFAULT_NAV
     }
 }
+
+export const updateTitle = (pageTitle, categoryTitle) => {
+    return {
+        type: types.UPDATE_TITLE,
+        pageTitle: pageTitle,
+        categoryTitle: categoryTitle
+    }
+}

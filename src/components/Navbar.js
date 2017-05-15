@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import NavItem from './NavItem'
+import { connect } from 'react-redux';
+
 
 
 class Navbar extends Component {
@@ -24,4 +26,18 @@ Navbar.propTypes = {
     items: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired
 };
 
-export default Navbar;
+const mapStateToProps = (state, ownProps) => {
+    return {
+        items: state.main.links,
+        location: state.router.location
+    }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return  {
+        
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

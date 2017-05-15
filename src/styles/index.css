@@ -2,9 +2,19 @@ body {
   padding-top: 50px;
   background: #252830
 }
-.app-title {
+hr {
+  background-color: #636c72;
+}
+
+.title-text {
   font-size: 2rem;
 }
+
+.table thead > tr > th {
+  border-bottom-color: #636c72;
+  border-bottom-width: 1px;
+  }
+
 
 .form-control:disabled, .form-control:focus, .form-control:active, .form-control, .form-control[readonly] {
 
@@ -16,6 +26,26 @@ body {
 
 .text-white {
   color: #ccc;
+}
+
+td{
+  color:#ccc
+}
+
+th{
+  color: #fff;
+  font-weight: normal;
+}
+
+.borderless td, .borderless th {
+    border: none;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+.table-hover tbody tr:hover {
+    background-color: rgba(255,255,255, 0.05);
 }
 
 .form-control::-webkit-input-placeholder { color: #ccc; }
@@ -52,6 +82,3 @@ body {
 .sidebar .nav-item + .nav-item {
   margin-left: 0;
 }
-
-
-
