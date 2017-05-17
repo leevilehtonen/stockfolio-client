@@ -1,6 +1,10 @@
 import * as types from './actionTypes';
-import { loadQuotes, loadQuoteData, loadQuoteDataHistory } from '../utils/api';
-import { requestErrorMessage } from './msgActions';
+import { loadQuotes, loadQuoteData, loadQuoteDataHistory, addStockToUserApi } from '../utils/api';
+import { requestErrorMessage, requestSuccessMessage } from './msgActions';
+import jwtDecode from 'jwt-decode';
+import { history } from '../';
+
+
 
 
 
@@ -121,7 +125,6 @@ export function fetchQuoteData(query) {
                 if (res.success) {
                     dispatch(recieveQuoteData(res));
                     dispatch(fetchQuoteDataHistory(query, 'day'))
-                    dispatch(fetchQuoteDataHistory(query, 'year',));
                 } else {
                     dispatch(recieveError());
                     dispatch(requestErrorMessage('Unable to fetch data with given query'));
@@ -184,4 +187,47 @@ export function fetchQuoteDataHistory(query, time) {
 
     }
 
+}
+
+
+export const requestStockAdd = () => {
+    return {
+        type: types.REQUEST_STOCK_ADD,
+    }
+}
+export const receiveStockAdd = () => {
+    return {
+        type: types.RECIEVE_STOCK_ADD,
+    }
+}
+
+export function addStockToUser(symbol, count) {
+    return (dispatch) => {
+        dispatch(requestStockAdd());
+        let token = localStorage.getItem('id_token');
+        let user = jwtDecode(token).name;
+        let body = {
+            symbol: symbol,
+            count: count,
+            user: user
+        }
+
+        return addStockToUserApi(body, token)
+            .then((res) => res.json())
+            .then((res) => {
+                if (res.success) {
+                    dispatch(receiveStockAdd());
+                    dispatch(requestSuccessMessage('You have added stock to your collection'))
+                    history.push('/user/stocks/portfolio');
+
+                } else {
+                    dispatch(recieveError());
+                    dispatch(requestErrorMessage(res.msg))
+                }
+            })
+            .catch((err) => {
+                dispatch(recieveError());
+                dispatch(requestErrorMessage('Unknown error'))
+            })
+    }
 }

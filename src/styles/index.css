@@ -28,7 +28,7 @@ body {
   height: 100%;
 }
 
-.form-control:disabled, .form-control:focus, .form-control:active, .form-control, .form-control[readonly] {
+.form-control-dark:disabled, .form-control-dark:focus, .form-control-dark:active, .form-control-dark, .form-control-dark[readonly] {
 
   background: #636c72;
 }
@@ -61,10 +61,10 @@ body {
     background-color: rgba(255,255,255, 0.05);
 }
 
-.form-control::-webkit-input-placeholder { color: #ccc; }
-.form-control:-moz-placeholder { color: #ccc; }
-.form-control::-moz-placeholder { color: #ccc; }
-.form-control:-ms-input-placeholder { color: #ccc; }
+.form-control-dark::-webkit-input-placeholder { color: #ccc; }
+.form-control-dark:-moz-placeholder { color: #ccc; }
+.form-control-dark::-moz-placeholder { color: #ccc; }
+.form-control-dark:-ms-input-placeholder { color: #ccc; }
 
 
 

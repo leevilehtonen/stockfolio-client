@@ -33,7 +33,7 @@ class QuoteQuery extends Component {
                     <FormGroup className='text-white'>
                         <Label for="queryInput">Search</Label>
                         <InputGroup>
-                            <Input type='text'value={this.state.quote} onChange={this.handleChange} name='query' id='queryInput' placeholder='Name, symbol..' className='text-white'/>
+                            <Input type='text'value={this.state.quote} onChange={this.handleChange} name='query' id='queryInput' placeholder='Name, symbol..' className='form-control-dark text-white'/>
                             <InputGroupButton color="primary">Search</InputGroupButton>
                         </InputGroup>
                     </FormGroup>

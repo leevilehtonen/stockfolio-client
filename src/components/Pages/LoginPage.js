@@ -65,14 +65,14 @@ class LoginPage extends Component {
 
                     <FormGroup color={(!this.state.usernameValid && this.state.usernameTouched) ? "danger" : ""} className="text-white">
                         <Label for="usernameInput">Username</Label>
-                        <Input type="text" value={this.state.username} onChange={this.handleChange} onBlur={this.handleBlur("username")} name="username" id="usernameInput" className="text-white" placeholder="Enter username" />
+                        <Input type="text" value={this.state.username} onChange={this.handleChange} onBlur={this.handleBlur("username")} name="username" id="usernameInput" className="text-white form-control-dark" placeholder="Enter username" />
                         {(!this.state.usernameValid && this.state.usernameTouched) ? <FormFeedback>Username is not in valid form.</FormFeedback> : null}
                         <FormText color="muted">Please provide your username.</FormText>
                     </FormGroup>
 
                     <FormGroup color={(!this.state.passwordValid && this.state.passwordTouched) ? "danger" : ""} className="text-white">
                         <Label for="passwordInput">Password</Label>
-                        <Input type="password" value={this.state.password} onChange={this.handleChange} onBlur={this.handleBlur("password")} name="password" id="passwordInput" className="text-white" placeholder="Enter password" />
+                        <Input type="password" value={this.state.password} onChange={this.handleChange} onBlur={this.handleBlur("password")} name="password" id="passwordInput" className="text-white form-control-dark" placeholder="Enter password" />
                         {(!this.state.passwordValid && this.state.passwordTouched) ? <FormFeedback>Password is not in valid form.</FormFeedback> : null}
                         <FormText color="muted">Please provide your password.</FormText>
                     </FormGroup>

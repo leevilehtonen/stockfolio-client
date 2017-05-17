@@ -75,6 +75,14 @@ const dataReducer = (state = {
                 isFetching: false,
                 quoteHistAll: action.all
             })
+        case types.REQUEST_STOCK_ADD:
+            return Object.assign({}, state, {
+                isFetching: false,
+            })
+        case types.RECIEVE_STOCK_ADD:
+            return Object.assign({}, state, {
+                isFetching: false,
+            })
         default:
             return state;
     }

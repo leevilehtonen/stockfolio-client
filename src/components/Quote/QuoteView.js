@@ -3,7 +3,7 @@ import { Modal, ModalBody, ModalHeader, ModalFooter, ButtonGroup, Button, Progre
 import { connect } from 'react-redux';
 import { Line, defaults } from 'react-chartjs-2';
 import { createChartData, chartOptions } from '../../utils/chartConfig'
-import {fetchQuoteDataHistory} from '../../actions/dataActions'
+import { fetchQuoteDataHistory } from '../../actions/dataActions'
 
 defaults.scale.ticks.autoSkipPadding = 10;
 
@@ -42,8 +42,8 @@ class QuoteView extends Component {
 
 
     onButtonClick(time) {
-        this.props.loadChartData(this.props.quote.symbol,time);
-        this.setState({activeDataSource: time});
+        this.props.loadChartData(this.props.quote.symbol, time);
+        this.setState({ activeDataSource: time });
     }
 
 
@@ -102,17 +102,18 @@ class QuoteView extends Component {
                             <hr className='mt-0' />
                             <div className='row mx-2'>
                                 <div className='col-10'>
-                                    {(!this.props.isFetching) ? <Line data={createChartData(this.getCurrentDatasource())} options={chartOptions} onElementsClick={()=>this.onButtonClick(this.state.activeDataSource)} /> : null}
+                                    {(!this.props.isFetching) ? <Line data={createChartData(this.getCurrentDatasource())} options={chartOptions} /> : null}
                                 </div>
                                 <div className='col-2'>
                                     <ButtonGroup vertical className='btn-block'>
                                         <Button size="sm" color='secondary' onClick={() => this.onButtonClick('day')} active={this.state.activeDataSource === 'day'} className='btn-block'>Day</Button>
-                                        <Button size="sm" color='secondary' onClick={() => this.onButtonClick('week')} active={this.state.activeDataSource === 'week'}  className='btn-block'>Week</Button>
-                                        <Button size="sm" color='secondary' onClick={() => this.onButtonClick('month')} active={this.state.activeDataSource === 'month'}  className='btn-block'>Month</Button>
+                                        <Button size="sm" color='secondary' onClick={() => this.onButtonClick('week')} active={this.state.activeDataSource === 'week'} className='btn-block'>Week</Button>
+                                        <Button size="sm" color='secondary' onClick={() => this.onButtonClick('month')} active={this.state.activeDataSource === 'month'} className='btn-block'>Month</Button>
                                         <Button size="sm" color='secondary' onClick={() => this.onButtonClick('threeMonth')} active={this.state.activeDataSource === 'threeMonth'} className='btn-block'>3 Months</Button>
-                                        <Button size="sm" color='secondary' onClick={() => this.onButtonClick('year')} active={this.state.activeDataSource === 'year'}  className='btn-block'>Year</Button>
+                                        <Button size="sm" color='secondary' onClick={() => this.onButtonClick('year')} active={this.state.activeDataSource === 'year'} className='btn-block'>Year</Button>
                                         <Button size="sm" color='secondary' onClick={() => this.onButtonClick('threeYear')} active={this.state.activeDataSource === 'threeYear'} className='btn-block'>3 Year</Button>
                                         <Button size="sm" color='secondary' onClick={() => this.onButtonClick('all')} active={this.state.activeDataSource === 'all'} className='btn-block'>All</Button>
+                                        <Button size="sm" color='info' onClick={() => this.onButtonClick(this.state.activeDataSource)} className='btn-block'>Update</Button>
                                     </ButtonGroup>
                                 </div>
                             </div>
@@ -178,7 +179,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        loadChartData:(symbol, time) => {
+        loadChartData: (symbol, time) => {
             dispatch(fetchQuoteDataHistory(symbol, time));
         }
     }

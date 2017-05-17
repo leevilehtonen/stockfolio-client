@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import {Input} from 'reactstrap'
 
 class Header extends Component {
     render() {
@@ -14,7 +15,7 @@ class Header extends Component {
                 <h1 className="display-4 text-white">{this.props.pageTitle}</h1>
             </div>
             <div className="col-2">
-                <input className="form-control text-white" type="text" value="10/12/2017" id="date-display" readOnly></input>
+                <Input className="form-control-dark text-white" type="text" value="10/12/2017" id="date-display" readOnly></Input>
             </div>
         </div>
         );
