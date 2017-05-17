@@ -1,3 +1,4 @@
+import randomColor from 'randomcolor';
 export const chartOptions = {
     autoSkipPadding: 5
 }
@@ -33,11 +34,17 @@ export function createChartData(data, symbol) {
     let volumeData = data.map(item => {
         return item.volume;
     })
-    chartDataObj.datasets.push(createDefualtDataset('High', highData, [0, 0, 0]))
-    chartDataObj.datasets.push(createDefualtDataset('Low', lowData, [0, 0, 0]))
-    chartDataObj.datasets.push(createDefualtDataset('Open', openData, [0, 0, 0]))
-    chartDataObj.datasets.push(createDefualtDataset('Close', closeData, [0, 0, 0]))
-    chartDataObj.datasets.push(createDefualtDataset('Volume', volumeData, [0, 0, 0], { hidden: true, fill: true }))
+
+    let colors = randomColor({
+        format: 'rgbArray',
+        count: 5,
+        luminosity: 'dark',
+    });
+    chartDataObj.datasets.push(createDefualtDataset('High', highData, colors[0]))
+    chartDataObj.datasets.push(createDefualtDataset('Low', lowData, colors[1]))
+    chartDataObj.datasets.push(createDefualtDataset('Open', openData, colors[2]))
+    chartDataObj.datasets.push(createDefualtDataset('Close', closeData, colors[3]))
+    chartDataObj.datasets.push(createDefualtDataset('Volume', volumeData, colors[4], { hidden: true, fill: true }))
 
     return chartDataObj;
 
@@ -49,13 +56,14 @@ function createDefualtDataset(label, data, color, additional) {
     let obj = {
         label: label,
         fill: false,
-        lineTension: 0.0,
+        lineTension: 0.1,
         backgroundColor: createColorString(color, 0.4),
         borderColor: createColorString(color, 1),
         borderCapStyle: 'butt',
         borderDash: [],
         borderDashOffset: 0.0,
         borderJoinStyle: 'miter',
+        borderWidth:2,
         pointBorderColor: createColorString(color, 1),
         pointBackgroundColor: "#fff",
         pointBorderWidth: 1,
@@ -63,7 +71,7 @@ function createDefualtDataset(label, data, color, additional) {
         pointHoverBackgroundColor: createColorString(color, 1),
         pointHoverBorderColor: "rgba(220,220,220,1)",
         pointHoverBorderWidth: 2,
-        pointRadius: 1,
+        pointRadius: 0,
         pointHitRadius: 10,
         spanGaps: false,
         data: data,

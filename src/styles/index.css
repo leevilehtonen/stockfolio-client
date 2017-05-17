@@ -24,7 +24,9 @@ body {
   border-bottom-width: 1px;
   
 }
-
+.btn-group-vertical {
+  height: 100%;
+}
 
 .form-control:disabled, .form-control:focus, .form-control:active, .form-control, .form-control[readonly] {
 
@@ -39,7 +41,8 @@ body {
 }
 
 .quote-result-table-td{
-  color:#ccc
+  color:#ccc;
+  cursor: pointer
 }
 
 .quote-result-table-th{

@@ -77,7 +77,7 @@ export const recieveQuoteHistWeek = (week) => {
 
 export const recieveQuoteHistMonth = (month) => {
     return {
-        type: types.RECIEVE_QUOTE_HIST_WEEK,
+        type: types.RECIEVE_QUOTE_HIST_MONTH,
         month: month
     }
 }

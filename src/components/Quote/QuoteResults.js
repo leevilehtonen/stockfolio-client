@@ -25,7 +25,7 @@ class QuoteResults extends Component {
                             </thead>
                             <tbody>
                                 {this.props.quotes.map((item, index) => {
-                                    return <QuoteItem
+                                    return <QuoteItem 
                                         key={index}
                                         number={index}
                                         symbol={item.symbol}

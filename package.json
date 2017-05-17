@@ -9,6 +9,7 @@
     "history": "*",
     "jwt-decode": "*",
     "prop-types": "*",
+    "randomcolor": "*",
     "react": "*",
     "react-addons-css-transition-group": "*",
     "react-addons-transition-group": "*",
