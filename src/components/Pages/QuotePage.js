@@ -25,11 +25,11 @@ class QuotePage extends Component {
     }
 
     render() {
+
         return (
             <div>
                 <QuoteQuery />
                 {this.props.showResults ? <QuoteResults openQuote={this.openQuote} /> : null}
-                <QuoteView />
                 
                 <QuoteView close={this.closeQuote} isOpen={this.state.modal} />
             </div>

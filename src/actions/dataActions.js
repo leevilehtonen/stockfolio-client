@@ -1,5 +1,5 @@
 import * as types from './actionTypes';
-import { loadQuotes, loadQuoteData, loadQuoteDataHistory, addStockToUserApi } from '../utils/api';
+import { loadQuotes, loadQuoteData, loadQuoteDataHistory, addStockToUserApi, loadUsersStocks, deleteStockFromUserApi } from '../utils/api';
 import { requestErrorMessage, requestSuccessMessage } from './msgActions';
 
 
@@ -222,6 +222,80 @@ export function addStockToUser(symbol, count) {
             .catch((err) => {
                 dispatch(recieveError());
                 dispatch(requestErrorMessage('Unknown error'))
+            })
+    }
+}
+export const requestUsersStocks = () => {
+    return {
+
+        type: types.REQUEST_USER_STOCKS
+    }
+}
+
+export const recieveUserStocks = (stocks) => {
+    return {
+        type: types.RECIEVE_USER_STOCKS,
+        stocks: stocks
+    }
+}
+
+
+export function fetchUsersStocks() {
+    return (dispatch) => {
+        dispatch(requestUsersStocks());
+        let token = localStorage.getItem('id_token');
+        return loadUsersStocks(token)
+            .then((res) => res.json())
+            .then((res) => {
+                if (res.success) {
+                    dispatch(recieveUserStocks(res.stocks));
+                } else {
+                    dispatch(recieveError());
+                    dispatch(requestErrorMessage('Unable to fetch portfolio'));
+                }
+            })
+            .catch((err) => {
+                dispatch(recieveError());
+                dispatch(requestErrorMessage('Unknow error'))
+            })
+
+    }
+
+}
+
+
+export const requestStockDelete = () => {
+    return {
+        type: types.REQUEST_USER_STOCK_DELETE
+    }
+}
+
+export const recieveStockDelete = () => {
+    return {
+        type: types.RECIEVE_USER_STOCK_DELETE
+    }
+}
+
+
+
+export function deleteUsersStock(id) {
+    return (dispatch) => {
+        dispatch(requestStockDelete());
+        let token = localStorage.getItem('id_token');
+        return deleteStockFromUserApi({id:id}, token)
+            .then((res) => res.json())
+            .then((res) => {
+                if (res.success) {
+                    dispatch(recieveStockDelete());
+                    dispatch(fetchUsersStocks());
+                } else {
+                    dispatch(recieveError());
+                    dispatch(requestErrorMessage('Unable to delete stock'));
+                }
+            })
+            .catch((err) => {
+                dispatch(recieveError());
+                dispatch(requestErrorMessage('Unknow error'))
             })
     }
 }

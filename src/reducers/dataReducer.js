@@ -6,6 +6,7 @@ const dataReducer = (state = {
     isFetching: false,
     quotes: [],
     quoteSnapshot: {},
+    stocks: []
 
 
 
@@ -82,6 +83,17 @@ const dataReducer = (state = {
         case types.RECIEVE_STOCK_ADD:
             return Object.assign({}, state, {
                 isFetching: false,
+            })
+        case types.REQUEST_USER_STOCKS:
+            return Object.assign({}, state, {
+                isFetching: true,
+                stocks: []
+            })
+        case types.RECIEVE_USER_STOCKS:
+            return Object.assign({}, state, {
+                isFetching: false,
+                stocks: action.stocks
+
             })
         default:
             return state;
