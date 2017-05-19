@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { updateTitle } from '../../actions/mainActions';
 import { fetchQuoteData } from '../../actions/dataActions';
-import { Modal, ModalFooter, Button } from 'reactstrap'
 import QuoteView from '../Quote/QuoteView';
 import QuoteQuery from '../Quote/QuoteQuery';
 import QuoteResults from '../Quote/QuoteResults';
@@ -50,7 +49,9 @@ class QuotePage extends Component {
 }
 
 QuotePage.propTypes = {
-
+    showResults: PropTypes.bool.isRequired,
+    updateTitle: PropTypes.func.isRequired,
+    loadQuote: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state, ownProps) => {

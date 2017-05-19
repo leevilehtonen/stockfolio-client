@@ -1,6 +1,5 @@
 import * as types from '../actions/actionTypes';
 import jwtDecode from 'jwt-decode';
-import { defaultLinks, authLinks } from '../utils/links';
 
 
 const authReducer = (state = {

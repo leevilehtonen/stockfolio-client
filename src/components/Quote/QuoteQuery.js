@@ -44,7 +44,7 @@ class QuoteQuery extends Component {
 }
 
 QuoteQuery.propTypes = {
-
+    submitQuery: PropTypes.func.isRequired,
 }
 
 

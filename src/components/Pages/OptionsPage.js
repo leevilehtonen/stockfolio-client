@@ -12,14 +12,14 @@ class OptionsPage extends Component {
     render() {
         return (
             <div>
-                
+                <p className='text-white'>TODO: User options: country, currency, language etc.</p>
             </div>
         );
     }
 }
 
 OptionsPage.propTypes = {
-
+    updateTitle: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => {

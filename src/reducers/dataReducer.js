@@ -13,7 +13,7 @@ const dataReducer = (state = {
     switch (action.type) {
         case types.REQUEST_QUOTES:
             return Object.assign({}, state, {
-                showResults: false,
+                showResults: true,
                 isFetching: true,
             })
         case types.RECIEVE_QUOTES:

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import Navbar from './Navbar';
 import Content from './Content';
 

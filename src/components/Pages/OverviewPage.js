@@ -19,7 +19,7 @@ class OverviewPage extends Component {
 }
 
 OverviewPage.propTypes = {
-
+    updateTitle: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => {

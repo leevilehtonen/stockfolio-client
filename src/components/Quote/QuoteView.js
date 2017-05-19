@@ -157,7 +157,8 @@ class QuoteView extends Component {
 }
 
 QuoteView.propTypes = {
-
+    quote: PropTypes.object,
+    isFetching: PropTypes.bool.isRequired,
 };
 
 

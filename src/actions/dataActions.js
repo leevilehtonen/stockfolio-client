@@ -1,8 +1,6 @@
 import * as types from './actionTypes';
 import { loadQuotes, loadQuoteData, loadQuoteDataHistory, addStockToUserApi } from '../utils/api';
 import { requestErrorMessage, requestSuccessMessage } from './msgActions';
-import jwtDecode from 'jwt-decode';
-import { history } from '../';
 
 
 
@@ -205,11 +203,9 @@ export function addStockToUser(symbol, count) {
     return (dispatch) => {
         dispatch(requestStockAdd());
         let token = localStorage.getItem('id_token');
-        let user = jwtDecode(token).name;
         let body = {
             symbol: symbol,
             count: count,
-            user: user
         }
 
         return addStockToUserApi(body, token)
@@ -218,8 +214,6 @@ export function addStockToUser(symbol, count) {
                 if (res.success) {
                     dispatch(receiveStockAdd());
                     dispatch(requestSuccessMessage('You have added stock to your collection'))
-                    history.push('/user/stocks/portfolio');
-
                 } else {
                     dispatch(recieveError());
                     dispatch(requestErrorMessage(res.msg))

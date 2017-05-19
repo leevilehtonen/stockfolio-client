@@ -6,6 +6,7 @@ import { updateTitle } from '../../actions/mainActions';
 class StocksPage extends Component {
 
     componentWillMount() {
+
         this.props.updateTitle('Stocks', 'DASHBOARD');
     }
 
@@ -20,7 +21,7 @@ class StocksPage extends Component {
 }
 
 StocksPage.propTypes = {
-
+    updateTitle: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => {

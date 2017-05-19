@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import HomePage from './Pages/HomePage';
 import OverviewPage from './Pages/OverviewPage';
@@ -33,8 +33,5 @@ class Content extends Component {
     }
 }
 
-Content.propTypes = {
-
-};
 
 export default Content;

@@ -1,14 +1,9 @@
 import * as types from './actionTypes';
-import { history } from '../';
+import history from '../utils/configureHistory';
 import { loginApi, registerApi } from '../utils/api';
 import { requestSuccessMessage, requestErrorMessage } from './msgActions';
-import { setAuthNav, setDefaultNav, updateTitle } from './mainActions';
+import { setAuthNav, setDefaultNav } from './mainActions';
 
-export function redirect(path) {
-    return (dispatch) => {
-        history.push(path);
-    }
-}
 
 export const requestLogin = () => {
     return {
@@ -37,6 +32,8 @@ export const requestLogout = () => {
     }
 }
 
+
+
 export function loginUser(user) {
     return (dispatch) => {
         dispatch(requestLogin());
@@ -45,9 +42,9 @@ export function loginUser(user) {
             .then((res) => {
                 if (res.success) {
                     dispatch(receiveLogin(res.token));
+                    history.push('/user/stocks/overview');
                     dispatch(setAuthNav());
                     dispatch(requestSuccessMessage("Logged in"))
-                    dispatch(redirect('/user/stocks/overview'));
 
                 } else {
                     dispatch(loginError());
@@ -67,7 +64,9 @@ export function loginUser(user) {
 export function logoutUser() {
     localStorage.removeItem('id_token');
     return (dispatch) => {
-        dispatch(logoutUser());
+        dispatch(setDefaultNav());
+        dispatch(requestLogout());
+        dispatch(requestSuccessMessage('Logged out'));
         history.push('/');
     }
 }

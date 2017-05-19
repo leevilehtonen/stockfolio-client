@@ -4,9 +4,6 @@ import { connect } from 'react-redux';
 import { updateTitle } from '../../actions/mainActions';
 
 class HomePage extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     
     componentWillMount() {
@@ -23,6 +20,10 @@ class HomePage extends Component {
 
 
 
+}
+
+HomePage.propTypes = {
+    updateTitle: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state, ownProps) => {

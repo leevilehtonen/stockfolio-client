@@ -13,7 +13,7 @@ class Navbar extends Component {
             <nav className=" col-2 sidebar">
                 <ul className="nav nav-pills flex-column">
                     {this.props.items.map((item, index) => {
-                        return <NavItem key = {index} {...item} />
+                        return <NavItem key={index} {...item} />
                     }
                     )}
                 </ul>
@@ -34,8 +34,8 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-    return  {
-        
+    return {
+
     }
 }
 

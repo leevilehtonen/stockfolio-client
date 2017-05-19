@@ -41,3 +41,6 @@ export function loadQuoteDataHistory(query, time, token) {
 export function addStockToUserApi(body, token) {
     return fetch('http://localhost:3001/api/users/stocks/add', authorizedConfig('POST', token, body));
 }
+export function loadUserData(token) {
+    return fetch('http://localhost:3001/api/users/profile', authorizedConfig('GET', token));
+}
