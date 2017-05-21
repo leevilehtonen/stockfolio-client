@@ -37,7 +37,7 @@ export function fetchQuotes(query) {
                     dispatch(recieveQuotes(res.ResultSet.Result));
                 } else {
                     dispatch(recieveError());
-                    dispatch(requestErrorMessage('Unable to fetch data with given query'));
+                    dispatch(requestErrorMessage('Unable to fetch quotes'));
                 }
             })
             .catch((err) => {
@@ -125,7 +125,7 @@ export function fetchQuoteData(query) {
                     dispatch(fetchQuoteDataHistory(query, 'day'))
                 } else {
                     dispatch(recieveError());
-                    dispatch(requestErrorMessage('Unable to fetch data with given query'));
+                    dispatch(requestErrorMessage('Unable to get stock data'));
                 }
             })
             .catch((err) => {
@@ -175,7 +175,7 @@ export function fetchQuoteDataHistory(query, time) {
                     }
                 } else {
                     dispatch(recieveError());
-                    dispatch(requestErrorMessage('Unable to fetch data with given query'));
+                    dispatch(requestErrorMessage('Unable to get historical data'));
                 }
             })
             .catch((err) => {
