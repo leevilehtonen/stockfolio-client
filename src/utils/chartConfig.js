@@ -2,6 +2,20 @@ import randomColor from 'randomcolor';
 export const chartOptions = {
     autoSkipPadding: 5
 }
+export const pieOptions = {
+    elements: {
+        arc: {
+            borderWidth: 1
+        }
+    },
+    
+    legend: {
+        display: true,
+        labels: {
+            fontColor: '#ccc'
+        }
+    }
+}
 
 export function createChartData(data, symbol) {
 
@@ -63,7 +77,7 @@ function createDefualtDataset(label, data, color, additional) {
         borderDash: [],
         borderDashOffset: 0.0,
         borderJoinStyle: 'miter',
-        borderWidth:2,
+        borderWidth: 2,
         pointBorderColor: createColorString(color, 1),
         pointBackgroundColor: "#fff",
         pointBorderWidth: 1,
@@ -82,4 +96,49 @@ function createDefualtDataset(label, data, color, additional) {
 
 function createColorString(color, alpha) {
     return 'rgba(' + color[0] + ',' + color[1] + ',' + color[2] + ',' + alpha + ')';
+}
+
+export function createPieData(stocks) {
+    let data = {
+        labels: [],
+        datasets: [],
+        animation: {
+            animateRotate: true
+        }
+    };
+
+    if (!stocks) {
+        return data;
+    }
+
+    let labels = stocks.map((item) => {
+        return (item.name ? (item.name + ' (' + item.symbol + ')') : (item.symbol))
+    });
+
+    let dataset = {
+        data: stocks.map((item) => {
+            return (item.currentValue);
+        }),
+        backgroundColor: createDarkColorArray(stocks.length),
+        hoverBackgroundColor: createLightColorArray(stocks.length)
+    }
+
+    data.labels = labels;
+    data.datasets.push(dataset);
+    return data;
+
+}
+
+function createDarkColorArray(size) {
+    return randomColor({
+        count: size,
+        format: 'hex'
+    });
+}
+function createLightColorArray(size) {
+    return randomColor({
+        count: size,
+        luminosity: 'bright',
+        format: 'hex'
+    });
 }
