@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
-
 import { Provider } from 'react-redux';
 import { Route  } from 'react-router-dom';
 import { ConnectedRouter,  } from 'react-router-redux';
@@ -10,9 +9,7 @@ import configureStore from './utils/configureStore';
 import 'bootstrap/dist/css/bootstrap.css'
 import './styles/index.css';
 
-const preloadedState = {
-
-}
+const preloadedState = {};
 
 
 let store = configureStore(preloadedState,history);

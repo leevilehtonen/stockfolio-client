@@ -89,7 +89,7 @@ class RegisterPage extends Component {
         return (
 
             <div>
-                <Form onSubmit={this.handleSubmit} className="register-form">
+                <Form onSubmit={this.handleSubmit} className="register-form mb-5">
 
                     <FormGroup color={(!this.state.emailValid && this.state.emailTouched) ? "danger" : ""} className="text-white">
                         <Label for="emailInput">Email</Label>
