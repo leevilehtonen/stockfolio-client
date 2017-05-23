@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { updateTitle } from '../../actions/mainActions';
+import { isAuthenticated } from '../../actions/authActions';
+
 
 class OptionsPage extends Component {
 
     componentWillMount() {
+        this.props.isAuthenticated(null, '/login');
         this.props.updateTitle('Options', 'USER');
     }
 
@@ -30,6 +33,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
+        isAuthenticated: (positiveRedirect, negativeRedirect) => {
+            dispatch(isAuthenticated(positiveRedirect, negativeRedirect));
+        },
         updateTitle: (pageTitle, categoryTitle) => {
             dispatch(updateTitle(pageTitle, categoryTitle));
         }

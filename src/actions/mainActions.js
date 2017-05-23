@@ -1,7 +1,6 @@
 import * as types from './actionTypes';
-import { validateToken, loadUserData } from '../utils/api';
-import { authFromToken, authReset } from './authActions';
-import {requestErrorMessage} from './msgActions';
+import { loadUserData } from '../utils/api';
+import { requestErrorMessage } from './msgActions';
 
 export const setAuthNav = () => {
     return {
@@ -15,29 +14,6 @@ export const setDefaultNav = () => {
     }
 }
 
-export function loadInitialState() {
-    return (dispatch) => {
-        let token = localStorage.getItem('id_token');
-        if (token !== null) {
-            return validateToken(token)
-                .then((res) => res.json())
-                .then((res) => {
-                    if (res.valid) {
-                        dispatch(authFromToken(token));
-                        dispatch(setAuthNav());
-                    } else {
-                        dispatch(authReset());
-                        dispatch(setDefaultNav());
-                    }
-                })
-                .catch((err) => {
-                    dispatch(authReset());
-                    dispatch(setDefaultNav());
-                })
-        }
-    }
-}
-
 
 export const updateTitle = (pageTitle, categoryTitle) => {
     return {
@@ -48,25 +24,25 @@ export const updateTitle = (pageTitle, categoryTitle) => {
 }
 
 export const requestUserData = () => {
-    return{
+    return {
         type: types.REQUEST_USER_DATA
     }
 }
 
 export const recieveUserData = (user) => {
-    return{
+    return {
         type: types.RECIEVE_USER_DATA,
         user: user
     }
 }
 
 export const userDataError = () => {
-    return{
+    return {
         type: types.USER_DATA_ERROR
     }
 }
 
-export function fetchUserData () {
+export function fetchUserData() {
     return (dispatch) => {
         dispatch(requestUserData());
         let token = localStorage.getItem('id_token');
@@ -87,5 +63,5 @@ export function fetchUserData () {
             })
 
     }
-    
+
 }

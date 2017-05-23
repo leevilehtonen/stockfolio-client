@@ -5,7 +5,6 @@ import Wrapper from './Wrapper';
 import AlertContainer from 'react-alert';
 import alertOptions from '../utils/alertConfig';
 import { recieveMessage } from '../actions/msgActions';
-import { loadInitialState } from '../actions/mainActions';
 
 class App extends Component {
     constructor(props) {
@@ -14,11 +13,6 @@ class App extends Component {
         this.showMessage = this.showMessage.bind(this);
 
     }
-    
-    componentWillMount() {
-        this.props.loadInitialState();
-    }
-    
 
     showMessage = () => {
         this.msg.show(this.props.msg, {
@@ -57,9 +51,6 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        loadInitialState: () => {
-            dispatch(loadInitialState())
-        },
         recieveMsg: () => {
             dispatch(recieveMessage())
         }

@@ -1,6 +1,6 @@
 import * as types from './actionTypes';
-import history from '../utils/configureHistory';
-import { loginApi, registerApi } from '../utils/api';
+import { push } from 'react-router-redux';
+import { loginApi, registerApi, validateToken } from '../utils/api';
 import { requestSuccessMessage, requestErrorMessage } from './msgActions';
 import { setAuthNav, setDefaultNav } from './mainActions';
 
@@ -42,7 +42,7 @@ export function loginUser(user) {
             .then((res) => {
                 if (res.success) {
                     dispatch(receiveLogin(res.token));
-                    history.push('/user/stocks/overview');
+                    dispatch(push('/user/stocks/overview'));
                     dispatch(setAuthNav());
                     dispatch(requestSuccessMessage("Logged in"))
 
@@ -67,7 +67,7 @@ export function logoutUser() {
         dispatch(setDefaultNav());
         dispatch(requestLogout());
         dispatch(requestSuccessMessage('Logged out'));
-        history.push('/');
+        dispatch(push('/'));
     }
 }
 
@@ -97,8 +97,9 @@ export function registerUser(user) {
             .then((res) => {
                 if (res.success) {
                     dispatch(receiveRegister());
-                    dispatch(requestSuccessMessage('You have registered'))
-                    history.push('/login');
+                    dispatch(requestSuccessMessage('You have registered'));
+                    dispatch(push('/login'));
+
 
                 } else {
                     dispatch(registerError());
@@ -106,6 +107,7 @@ export function registerUser(user) {
                 }
             })
             .catch((err) => {
+                console.log(err);
                 dispatch(registerError());
                 dispatch(requestErrorMessage('Unknown error'))
             })
@@ -125,4 +127,45 @@ export const authFromToken = (token) => {
         id_token: token
     }
 }
+
+export function isAuthenticated(positiveRedirect, negativeRedirect) {
+    return (dispatch) => {
+        let token = localStorage.getItem('id_token');
+        if (token) {
+            return validateToken(token)
+                .then((res) => res.json())
+                .then((res) => {
+                    if (res.valid) {
+                        dispatch(authFromToken(token));
+                        dispatch(setAuthNav());
+                        if (positiveRedirect) {
+                            dispatch(push(positiveRedirect));
+                        }
+                    } else {
+                        dispatch(authReset());
+                        dispatch(setDefaultNav());
+                        if (negativeRedirect) {
+                            dispatch(push(negativeRedirect));
+                        }
+                    }
+                })
+                .catch((err) => {
+                    dispatch(authReset());
+                    dispatch(setDefaultNav());
+                    if (negativeRedirect) {
+                        dispatch(push(negativeRedirect));
+                    }
+
+                })
+        } else {
+            dispatch(authReset());
+            dispatch(setDefaultNav());
+            if (negativeRedirect) {
+                dispatch(push(negativeRedirect));
+            }
+        }
+    }
+}
+
+
 

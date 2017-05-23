@@ -31,7 +31,7 @@ class RegisterPage extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {initialState};
+        this.state = Object.assign({}, initialState);
         this.handleChange = this.handleChange.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -59,12 +59,12 @@ class RegisterPage extends Component {
         } else if (e.target.name === 'password') {
             this.setState({ password: e.target.value }, () => {
                 this.setState({ passwordValid: validator.isLength(this.state.password, { min: 5, max: 128 }) });
-                this.setState({ passMatch: validator.equals(this.state.passwordRepeat, this.state.password) });
+                this.setState({ passMatch: validator.equals(this.state.passwordRepeat+'', this.state.password+'') });
 
             });
         } else if (e.target.name === 'passwordRepeat') {
             this.setState({ passwordRepeat: e.target.value }, () => {
-                this.setState({ passMatch: validator.equals(this.state.passwordRepeat, this.state.password) });
+                this.setState({ passMatch: validator.equals(this.state.passwordRepeat+'', this.state.password+'') });
             });
         }
     }

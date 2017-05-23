@@ -4,7 +4,7 @@ import App from './components/App';
 
 import { Provider } from 'react-redux';
 import { Route  } from 'react-router-dom';
-import { ConnectedRouter } from 'react-router-redux';
+import { ConnectedRouter,  } from 'react-router-redux';
 import history from './utils/configureHistory';
 import configureStore from './utils/configureStore';
 import 'bootstrap/dist/css/bootstrap.css'

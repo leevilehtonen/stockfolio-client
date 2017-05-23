@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Table, Progress } from 'reactstrap';
 import { updateTitle } from '../../actions/mainActions';
+import { isAuthenticated } from '../../actions/authActions';
 import { fetchUsersStocks, fetchQuoteData, deleteUsersStock } from '../../actions/dataActions';
 import StockItem from './StockItem';
 import QuoteView from '../Quote/QuoteView';
@@ -21,6 +22,7 @@ class StocksPage extends Component {
     }
 
     componentWillMount() {
+        this.props.isAuthenticated(null, '/login');
         this.props.updateTitle('Stocks', 'DASHBOARD');
         this.props.fetchStocks();
     }
@@ -49,6 +51,12 @@ class StocksPage extends Component {
                     <QuoteView close={this.closeQuote} isOpen={this.state.modal} />
                 </div>
             );
+        } else if (!this.props.stocks || this.props.stocks.lenght===0)  {
+            return(
+                <div>
+                    <h1 className='title-text display-4 text-muted'>You don't have any stocks in your portfolio.</h1>
+                </div>
+            )
         } else {
             return (
                 <div>
@@ -117,6 +125,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
+        isAuthenticated: (positiveRedirect, negativeRedirect) => {
+            dispatch(isAuthenticated(positiveRedirect, negativeRedirect));
+        },
         updateTitle: (pageTitle, categoryTitle) => {
             dispatch(updateTitle(pageTitle, categoryTitle));
         },

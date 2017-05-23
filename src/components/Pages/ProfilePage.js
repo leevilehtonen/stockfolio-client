@@ -3,16 +3,18 @@ import PropTypes from 'prop-types';
 import { Progress, Input, Form, FormGroup, Label, Col } from 'reactstrap';
 import { connect } from 'react-redux';
 import { updateTitle, fetchUserData } from '../../actions/mainActions';
+import { isAuthenticated } from '../../actions/authActions';
+
 
 class ProfilePage extends Component {
 
     componentWillMount() {
+        this.props.isAuthenticated(null, '/login');
         this.props.fetchUserData();
         this.props.updateTitle('Profile', 'USER');
     }
 
     render() {
-
         if (this.props.isFetching) {
             return (
                 <div>
@@ -21,11 +23,8 @@ class ProfilePage extends Component {
                 </div>
             );
         } else {
-
-
             return (
                 <Form>
-
                     {Object.keys(this.props.user).map((key, index) => {
                         return (
                             <FormGroup key={index} row className='text-white'>
@@ -60,6 +59,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
+        isAuthenticated: (positiveRedirect, negativeRedirect) => {
+            dispatch(isAuthenticated(positiveRedirect, negativeRedirect));
+        },
         updateTitle: (pageTitle, categoryTitle) => {
             dispatch(updateTitle(pageTitle, categoryTitle));
         },

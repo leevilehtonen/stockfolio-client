@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { updateTitle } from '../../actions/mainActions';
 import { fetchQuoteData } from '../../actions/dataActions';
+import { isAuthenticated } from '../../actions/authActions';
 import QuoteView from '../Quote/QuoteView';
 import QuoteQuery from '../Quote/QuoteQuery';
 import QuoteResults from '../Quote/QuoteResults';
@@ -21,6 +22,7 @@ class QuotePage extends Component {
     }
 
     componentWillMount() {
+        this.props.isAuthenticated(null, '/login');
         this.props.updateTitle('Quote', 'DASHBOARD');
     }
 
@@ -30,7 +32,7 @@ class QuotePage extends Component {
             <div>
                 <QuoteQuery />
                 {this.props.showResults ? <QuoteResults openQuote={this.openQuote} /> : null}
-                
+
                 <QuoteView close={this.closeQuote} isOpen={this.state.modal} />
             </div>
         );
@@ -62,6 +64,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
+        isAuthenticated: (positiveRedirect, negativeRedirect) => {
+            dispatch(isAuthenticated(positiveRedirect, negativeRedirect));
+        },
         updateTitle: (pageTitle, categoryTitle) => {
             dispatch(updateTitle(pageTitle, categoryTitle));
         },

@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom'
 import { Row, Col } from 'reactstrap';
-
+import { isAuthenticated } from '../../actions/authActions';
 import { updateTitle } from '../../actions/mainActions';
 
 class HomePage extends Component {
 
 
     componentWillMount() {
+        this.props.isAuthenticated('/user/stocks/overview', '');
         this.props.updateTitle('Home', 'MENU');
     }
 
@@ -56,12 +57,14 @@ HomePage.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
+        isAuthenticated: (positiveRedirect, negativeRedirect) => {
+            dispatch(isAuthenticated(positiveRedirect, negativeRedirect));
+        },
         updateTitle: (pageTitle, categoryTitle) => {
             dispatch(updateTitle(pageTitle, categoryTitle));
         }
