@@ -8,13 +8,10 @@ import { updateTitle } from '../../actions/mainActions';
 
 class HomePage extends Component {
 
-
     componentWillMount() {
         this.props.isAuthenticated('/user/stocks/overview', '');
         this.props.updateTitle('Home', 'MENU');
     }
-
-
     render() {
         return (
             <div>
@@ -46,18 +43,14 @@ class HomePage extends Component {
             </div>
         );
     }
-
-
-
 }
 
 HomePage.propTypes = {
-    updateTitle: PropTypes.func.isRequired
+    updateTitle: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.func.isRequired
 }
-
 const mapStateToProps = (state, ownProps) => {
-    return {
-    }
+    return {}
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {

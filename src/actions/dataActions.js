@@ -3,9 +3,6 @@ import { loadQuotes, loadQuoteData, loadQuoteDataHistory, addStockToUserApi, loa
 import { requestErrorMessage, requestSuccessMessage } from './msgActions';
 
 
-
-
-
 export const requestQuotes = () => {
     return {
         type: types.REQUEST_QUOTES
@@ -132,12 +129,8 @@ export function fetchQuoteData(query) {
                 dispatch(recieveError());
                 dispatch(requestErrorMessage('Unknow error'))
             })
-
     }
-
 }
-
-
 
 export function fetchQuoteDataHistory(query, time) {
     return (dispatch) => {
@@ -190,12 +183,12 @@ export function fetchQuoteDataHistory(query, time) {
 
 export const requestStockAdd = () => {
     return {
-        type: types.REQUEST_STOCK_ADD,
+        type: types.REQUEST_USER_STOCK_ADD,
     }
 }
 export const receiveStockAdd = () => {
     return {
-        type: types.RECIEVE_STOCK_ADD,
+        type: types.RECIEVE_USER_STOCK_ADD,
     }
 }
 
@@ -225,6 +218,43 @@ export function addStockToUser(symbol, count) {
             })
     }
 }
+
+
+
+export const requestStockDelete = () => {
+    return {
+        type: types.REQUEST_USER_STOCK_DELETE
+    }
+}
+
+export const recieveStockDelete = () => {
+    return {
+        type: types.RECIEVE_USER_STOCK_DELETE
+    }
+}
+
+export function deleteUsersStock(id) {
+    return (dispatch) => {
+        dispatch(requestStockDelete());
+        let token = localStorage.getItem('id_token');
+        return deleteStockFromUserApi({ id: id }, token)
+            .then((res) => res.json())
+            .then((res) => {
+                if (res.success) {
+                    dispatch(recieveStockDelete());
+                    dispatch(fetchUsersStocks());
+                } else {
+                    dispatch(recieveError());
+                    dispatch(requestErrorMessage('Unable to delete stock'));
+                }
+            })
+            .catch((err) => {
+                dispatch(recieveError());
+                dispatch(requestErrorMessage('Unknow error'))
+            })
+    }
+}
+
 export const requestUsersStocks = () => {
     return {
 
@@ -261,41 +291,4 @@ export function fetchUsersStocks() {
 
     }
 
-}
-
-
-export const requestStockDelete = () => {
-    return {
-        type: types.REQUEST_USER_STOCK_DELETE
-    }
-}
-
-export const recieveStockDelete = () => {
-    return {
-        type: types.RECIEVE_USER_STOCK_DELETE
-    }
-}
-
-
-
-export function deleteUsersStock(id) {
-    return (dispatch) => {
-        dispatch(requestStockDelete());
-        let token = localStorage.getItem('id_token');
-        return deleteStockFromUserApi({id:id}, token)
-            .then((res) => res.json())
-            .then((res) => {
-                if (res.success) {
-                    dispatch(recieveStockDelete());
-                    dispatch(fetchUsersStocks());
-                } else {
-                    dispatch(recieveError());
-                    dispatch(requestErrorMessage('Unable to delete stock'));
-                }
-            })
-            .catch((err) => {
-                dispatch(recieveError());
-                dispatch(requestErrorMessage('Unknow error'))
-            })
-    }
 }

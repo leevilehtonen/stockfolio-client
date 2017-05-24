@@ -23,7 +23,8 @@ class Navbar extends Component {
 }
 
 Navbar.propTypes = {
-    items: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired
+    items: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+    location: PropTypes.object
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -34,10 +35,7 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-
-    }
+    return {}
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

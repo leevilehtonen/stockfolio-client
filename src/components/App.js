@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import Header from './Header';
 import Wrapper from './Wrapper';
@@ -36,9 +37,13 @@ class App extends Component {
             this.showMessage();
         }
     }
-   
-    
+}
 
+App.propTypes = {
+    shouldSendMessage: PropTypes.bool.isRequired,
+    msg: PropTypes.string,
+    color: PropTypes.string,
+    recieveMsg: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state, ownProps) => {

@@ -113,7 +113,13 @@ class StocksPage extends Component {
 }
 
 StocksPage.propTypes = {
-    updateTitle: PropTypes.func.isRequired
+    isFetching: PropTypes.bool.isRequired,
+    stocks: PropTypes.arrayOf(PropTypes.object).isRequired,
+    updateTitle: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.func.isRequired,
+    fetchStocks: PropTypes.func.isRequired,
+    loadQuote: PropTypes.func.isRequired,
+    deleteStock: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => {

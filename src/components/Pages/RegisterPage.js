@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import validator from 'validator';
 import { Button, Form, FormGroup, Label, Input, FormText, FormFeedback } from 'reactstrap';
-import {registerUser} from '../../actions/authActions';
+import { registerUser } from '../../actions/authActions';
 import { updateTitle } from '../../actions/mainActions';
 
 const initialState = {
@@ -59,12 +59,12 @@ class RegisterPage extends Component {
         } else if (e.target.name === 'password') {
             this.setState({ password: e.target.value }, () => {
                 this.setState({ passwordValid: validator.isLength(this.state.password, { min: 5, max: 128 }) });
-                this.setState({ passMatch: validator.equals(this.state.passwordRepeat+'', this.state.password+'') });
+                this.setState({ passMatch: validator.equals(this.state.passwordRepeat + '', this.state.password + '') });
 
             });
         } else if (e.target.name === 'passwordRepeat') {
             this.setState({ passwordRepeat: e.target.value }, () => {
-                this.setState({ passMatch: validator.equals(this.state.passwordRepeat+'', this.state.password+'') });
+                this.setState({ passMatch: validator.equals(this.state.passwordRepeat + '', this.state.password + '') });
             });
         }
     }
@@ -142,12 +142,13 @@ class RegisterPage extends Component {
 
 RegisterPage.propTypes = {
     registerUser: PropTypes.func.isRequired,
+    updateTitle: PropTypes.func.isRequired,
+    isFetching: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => {
     return {
         isFetching: state.auth.isFetching,
-        statusText: state.auth.statusText
     }
 }
 

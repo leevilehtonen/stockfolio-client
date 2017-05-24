@@ -52,6 +52,7 @@ class QuotePage extends Component {
 
 QuotePage.propTypes = {
     showResults: PropTypes.bool.isRequired,
+    isAuthenticated: PropTypes.func.isRequired,
     updateTitle: PropTypes.func.isRequired,
     loadQuote: PropTypes.func.isRequired
 }

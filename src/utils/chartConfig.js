@@ -1,4 +1,5 @@
 import randomColor from 'randomcolor';
+
 export const chartOptions = {
     autoSkipPadding: 5
 }
@@ -8,7 +9,7 @@ export const pieOptions = {
             borderWidth: 1
         }
     },
-    
+
     legend: {
         display: true,
         labels: {

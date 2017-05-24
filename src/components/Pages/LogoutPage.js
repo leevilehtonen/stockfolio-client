@@ -14,7 +14,7 @@ class LogoutPage extends Component {
     render() {
         return (
             <div>
-                
+                Log out
             </div>
         );
     }
@@ -26,9 +26,7 @@ LogoutPage.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-    return {
-
-    }
+    return {}
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {

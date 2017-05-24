@@ -18,7 +18,6 @@ const mainReducer = (state = {
             return Object.assign({}, state, {
                 links: defaultLinks,
             })
-
         case types.UPDATE_TITLE:
             return Object.assign({}, state, {
                 pageTitle: action.pageTitle,

@@ -40,12 +40,10 @@ class QuoteView extends Component {
         }
     }
 
-
     onButtonClick(time) {
         this.props.loadChartData(this.props.quote.symbol, time);
         this.setState({ activeDataSource: time });
     }
-
 
     render() {
 
@@ -159,9 +157,15 @@ class QuoteView extends Component {
 QuoteView.propTypes = {
     quote: PropTypes.object,
     isFetching: PropTypes.bool.isRequired,
+    daySeries: PropTypes.arrayOf(PropTypes.object),
+    weekSeries: PropTypes.arrayOf(PropTypes.object),
+    monthSeries: PropTypes.arrayOf(PropTypes.object),
+    yearSeries: PropTypes.arrayOf(PropTypes.object),
+    threeMonthSeries: PropTypes.arrayOf(PropTypes.object),
+    threeYearSeries: PropTypes.arrayOf(PropTypes.object),
+    allSeries: PropTypes.arrayOf(PropTypes.object),
+    loadChartData: PropTypes.func.isRequired
 };
-
-
 
 const mapStateToProps = (state, ownProps) => {
     return {

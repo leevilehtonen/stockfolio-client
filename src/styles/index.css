@@ -66,8 +66,6 @@ body {
 .form-control-dark::-moz-placeholder { color: #ccc; }
 .form-control-dark:-ms-input-placeholder { color: #ccc; }
 
-
-
 .nav-pills > li > a:link, .nav-pills  >li>a:visited {
   color: #ccc;
 }

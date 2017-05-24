@@ -22,13 +22,12 @@ class OptionsPage extends Component {
 }
 
 OptionsPage.propTypes = {
+    isAuthenticated: PropTypes.func.isRequired,
     updateTitle: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => {
-    return {
-
-    }
+    return {}
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {

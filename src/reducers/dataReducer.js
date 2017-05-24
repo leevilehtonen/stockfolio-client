@@ -7,9 +7,6 @@ const dataReducer = (state = {
     quotes: [],
     quoteSnapshot: {},
     stocks: []
-
-
-
 }, action) => {
     switch (action.type) {
         case types.REQUEST_QUOTES:
@@ -76,11 +73,19 @@ const dataReducer = (state = {
                 isFetching: false,
                 quoteHistAll: action.all
             })
-        case types.REQUEST_STOCK_ADD:
+        case types.REQUEST_USER_STOCK_ADD:
+            return Object.assign({}, state, {
+                isFetching: true,
+            })
+        case types.RECIEVE_USER_STOCK_ADD:
             return Object.assign({}, state, {
                 isFetching: false,
             })
-        case types.RECIEVE_STOCK_ADD:
+        case types.REQUEST_USER_STOCK_DELETE:
+            return Object.assign({}, state, {
+                isFetching: true,
+            })
+        case types.RECIEVE_USER_STOCK_DELETE:
             return Object.assign({}, state, {
                 isFetching: false,
             })

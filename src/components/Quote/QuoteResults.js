@@ -60,7 +60,6 @@ class QuoteResults extends Component {
         } else {
 
             return (
-
                 <div>
                     <hr className='hr-dark mt-2 mb-4' />
                     <Table size='sm' hover striped className='small borderless quote-result-table'>
@@ -93,8 +92,6 @@ class QuoteResults extends Component {
                         </tbody>
                     </Table>
 
-
-
                     <Modal isOpen={this.state.modal}  >
                         <ModalHeader>{this.state.modalTitle}</ModalHeader>
                         <ModalBody>
@@ -118,8 +115,9 @@ class QuoteResults extends Component {
 }
 
 QuoteResults.propTypes = {
-    quotes: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-    addStock: PropTypes.func.isRequired
+    quotes: PropTypes.arrayOf(PropTypes.object).isRequired,
+    addStock: PropTypes.func.isRequired,
+    isFetching: PropTypes.bool.isRequired
 
 };
 const mapStateToProps = (state, ownProps) => {

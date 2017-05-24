@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { connect} from 'react-redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {fetchQuotes} from '../../actions/dataActions'
+import { fetchQuotes } from '../../actions/dataActions'
 import { Form, FormGroup, Label, Input, InputGroup, InputGroupButton } from 'reactstrap';
 
 class QuoteQuery extends Component {
@@ -19,11 +19,11 @@ class QuoteQuery extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.submitQuery(this.state.quote);
-        this.setState({quote: ''});        
+        this.setState({ quote: '' });
     }
 
     handleChange = (e) => {
-        this.setState({quote: e.target.value});
+        this.setState({ quote: e.target.value });
     }
 
     render() {
@@ -33,7 +33,13 @@ class QuoteQuery extends Component {
                     <FormGroup className='text-white'>
                         <Label for="queryInput">Search</Label>
                         <InputGroup>
-                            <Input type='text'value={this.state.quote} onChange={this.handleChange} name='query' id='queryInput' placeholder='Name, symbol..' className='form-control-dark text-white'/>
+                            <Input
+                                type='text' value={this.state.quote}
+                                onChange={this.handleChange}
+                                name='query'
+                                id='queryInput'
+                                placeholder='Name, symbol..'
+                                className='form-control-dark text-white' />
                             <InputGroupButton color="primary">Search</InputGroupButton>
                         </InputGroup>
                     </FormGroup>
@@ -49,8 +55,7 @@ QuoteQuery.propTypes = {
 
 
 const mapStateToProps = (state, ownProps) => {
-    return {
-    }
+    return {}
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {

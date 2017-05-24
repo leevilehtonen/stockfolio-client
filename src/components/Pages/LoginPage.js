@@ -22,6 +22,7 @@ class LoginPage extends Component {
         super(props);
 
         this.state = Object.assign({}, intialState);
+        
         this.handleChange = this.handleChange.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -57,7 +58,6 @@ class LoginPage extends Component {
         this.setState(Object.assign({}, intialState));
     }
 
-
     render() {
         return (
             <div>
@@ -77,11 +77,12 @@ class LoginPage extends Component {
                         <FormText color="muted">Please provide your password.</FormText>
                     </FormGroup>
 
-                    <Button type="submit" color="primary"
-                        disabled={!(
-                            this.state.usernameValid &&
-                            this.state.usernameTouched &&
-                            this.state.passwordValid)} >Login</Button>
+                    <Button type="submit" color="primary" disabled={!(
+                        this.state.usernameValid &&
+                        this.state.usernameTouched &&
+                        this.state.passwordValid)} >
+                        Login
+                    </Button>
                 </Form>
             </div>
         );
@@ -89,7 +90,9 @@ class LoginPage extends Component {
 }
 
 LoginPage.propTypes = {
-    loginUser: PropTypes.func.isRequired
+    loginUser: PropTypes.func.isRequired,
+    updateTitle: PropTypes.func.isRequired,
+    isFetching: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => {

@@ -15,7 +15,6 @@ const postConfig = (body) => ({
     body: JSON.stringify(body),
     headers: {
         'Content-Type': 'application/json',
-        
     },
     mode: 'cors'
 });
@@ -25,15 +24,12 @@ const API_URI = 'https://stockfolio-server.herokuapp.com'
 export function loginApi(user) {
     return fetch(API_URI+'/api/users/authenticate', postConfig(user));
 }
-
 export function registerApi(user) {
     return fetch(API_URI+'/api/users/register', postConfig(user));
 }
-
 export function validateToken(token) {
     return fetch(API_URI+'/api/users/validate', authorizedConfig('GET', token));
 }
-
 export function loadQuotes(query, token) {
     return fetch(API_URI+'/api/stocks/find?query=' + query, authorizedConfig('GET', token));
 }

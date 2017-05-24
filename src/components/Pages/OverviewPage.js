@@ -43,7 +43,11 @@ class OverviewPage extends Component {
 }
 
 OverviewPage.propTypes = {
-    updateTitle: PropTypes.func.isRequired
+    isAuthenticated: PropTypes.func.isRequired,
+    updateTitle: PropTypes.func.isRequired,
+    fetchStocks: PropTypes.func.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    stocks: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 const mapStateToProps = (state, ownProps) => {

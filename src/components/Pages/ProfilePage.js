@@ -46,6 +46,7 @@ class ProfilePage extends Component {
 ProfilePage.propTypes = {
     isFetching: PropTypes.bool.isRequired,
     user: PropTypes.object,
+    isAuthenticated: PropTypes.func.isRequired,
     updateTitle: PropTypes.func.isRequired,
     fetchUserData: PropTypes.func.isRequired
 };

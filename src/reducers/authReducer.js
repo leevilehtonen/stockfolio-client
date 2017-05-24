@@ -28,14 +28,12 @@ const authReducer = (state = {
                 token: null,
                 userName: null,
             })
-
         case types.LOGOUT_REQUEST:
             return Object.assign({}, state, {
                 isAuthenticated: false,
                 token: null,
                 userName: null,
             })
-
         case types.REGISTER_REQUEST:
             return Object.assign({}, state, {
                 isFetching: true,
@@ -61,10 +59,8 @@ const authReducer = (state = {
                 token: null,
                 userName: null,
             })
-
         default:
             return state;
     }
 }
-
 export default authReducer;

@@ -26,12 +26,9 @@ class Content extends Component {
                 <Route path="/user/profile" component={ProfilePage} />
                 <Route path="/user/options" component={OptionsPage} />
                 <Route path="/user/logout" component={LogoutPage} />
-
-
             </main>
         );
     }
 }
-
 
 export default Content;

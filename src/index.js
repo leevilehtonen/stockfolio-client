@@ -11,7 +11,6 @@ import './styles/index.css';
 
 const preloadedState = {};
 
-
 let store = configureStore(preloadedState,history);
 let rootElement = document.getElementById('root');
 

@@ -61,7 +61,5 @@ export function fetchUserData() {
                 dispatch(userDataError());
                 dispatch(requestErrorMessage('Unknow error'))
             })
-
     }
-
 }
