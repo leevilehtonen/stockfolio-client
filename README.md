@@ -1,9 +1,15 @@
-# stockfolio-client [![Build Status](https://travis-ci.org/leevilehtonen/stockfolio-client.png?branch=master)](https://travis-ci.org/leevilehtonen/stockfolio-client)
+# stockfolio-client 
+[![Build Status](https://travis-ci.org/leevilehtonen/stockfolio-client.png?branch=master)](https://travis-ci.org/leevilehtonen/stockfolio-client)
+
+[![Dependency Status](https://david-dm.org/leevilehtonen/stockfolio-client.svg)](https://david-dm.org/leevilehtonen/stockfolio-client)
+[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
+
+
 
 Node web app for managing your stock portfolio (client)
 
-- [Help](docs/HELP.md) 
-- [Components](docs/COMPONENTS.md)
+- [Help](docs/HELP.md) - create-react-app user guide
+- [Components](docs/COMPONENTS.md) - more information about react components used
 
 
 ## Getting Started
