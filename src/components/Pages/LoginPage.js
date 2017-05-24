@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import validator from 'validator';
 import { Button, Form, FormGroup, Label, Input, FormText, FormFeedback } from 'reactstrap';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/authActions';
@@ -35,11 +34,11 @@ class LoginPage extends Component {
     handleChange = (e) => {
         if (e.target.name === 'username') {
             this.setState({ username: e.target.value }, () => {
-                this.setState({ usernameValid: validator.isLength(this.state.username, { min: 1, max: 32 }) });
+                this.setState({ usernameValid: this.state.username.length>= 1 && this.state.name.length<=32 ? true : false });
             })
         } else if (e.target.name === 'password') {
             this.setState({ password: e.target.value }, () => {
-                this.setState({ passwordValid: validator.isLength(this.state.password, { min: 1, max: 128 }) });
+                this.setState({ passwordValid: this.state.password.length>= 1 && this.state.name.length<=128 ? true : false });
             })
         }
     }
