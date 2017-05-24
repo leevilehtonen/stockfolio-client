@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Modal, ModalBody, ModalHeader, ModalFooter, ButtonGroup, Button, Progress, Table } from 'reactstrap';
 import { connect } from 'react-redux';
 import { Line, defaults } from 'react-chartjs-2';
