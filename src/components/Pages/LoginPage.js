@@ -34,11 +34,11 @@ class LoginPage extends Component {
     handleChange = (e) => {
         if (e.target.name === 'username') {
             this.setState({ username: e.target.value }, () => {
-                this.setState({ usernameValid: this.state.username.length>= 1 && this.state.name.length<=32 ? true : false });
+                this.setState({ usernameValid: this.state.username.length>= 1 && this.state.username.length<=32 ? true : false });
             })
         } else if (e.target.name === 'password') {
             this.setState({ password: e.target.value }, () => {
-                this.setState({ passwordValid: this.state.password.length>= 1 && this.state.name.length<=128 ? true : false });
+                this.setState({ passwordValid: this.state.password.length>= 1 && this.state.password.length<=128 ? true : false });
             })
         }
     }

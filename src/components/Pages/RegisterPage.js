@@ -53,11 +53,11 @@ class RegisterPage extends Component {
             });
         } else if (e.target.name === 'username') {
             this.setState({ username: e.target.value }, () => {
-                this.setState({ usernameValid: this.state.username.length>= 5 && this.state.name.length<=32 ? true : false});
+                this.setState({ usernameValid: this.state.username.length>= 5 && this.state.username.length<=32 ? true : false});
             });
         } else if (e.target.name === 'password') {
             this.setState({ password: e.target.value }, () => {
-                this.setState({ passwordValid: this.state.password.length>= 5 && this.state.name.length<=128 ? true : false});
+                this.setState({ passwordValid: this.state.password.length>= 5 && this.state.password.length<=128 ? true : false});
                 this.setState({ passMatch: (this.state.password+'') === (this.state.passwordRepeat+'')});
 
             });
