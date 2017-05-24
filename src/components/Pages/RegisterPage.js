@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import validator from 'validator';
+import validator from 'email-validator';
 import { Button, Form, FormGroup, Label, Input, FormText, FormFeedback } from 'reactstrap';
 import { registerUser } from '../../actions/authActions';
 import { updateTitle } from '../../actions/mainActions';
@@ -45,26 +45,25 @@ class RegisterPage extends Component {
 
         if (e.target.name === 'email') {
             this.setState({ email: e.target.value }, () => {
-                this.setState({ emailValid: validator.isEmail(this.state.email) });
+                this.setState({ emailValid: validator.validate(this.state.email) });
             });
         } else if (e.target.name === 'name') {
             this.setState({ name: e.target.value }, () => {
-                this.setState({ nameValid: validator.isLength(this.state.name, { min: 5, max: 64 }) });
+                this.setState({ nameValid: this.state.name.length>= 5 && this.state.name.length<=64 ? true : false });
             });
         } else if (e.target.name === 'username') {
             this.setState({ username: e.target.value }, () => {
-
-                this.setState({ usernameValid: validator.isLength(this.state.username, { min: 5, max: 32 }) });
+                this.setState({ usernameValid: this.state.username.length>= 5 && this.state.name.length<=32 ? true : false});
             });
         } else if (e.target.name === 'password') {
             this.setState({ password: e.target.value }, () => {
-                this.setState({ passwordValid: validator.isLength(this.state.password, { min: 5, max: 128 }) });
-                this.setState({ passMatch: validator.equals(this.state.passwordRepeat + '', this.state.password + '') });
+                this.setState({ passwordValid: this.state.password.length>= 5 && this.state.name.length<=128 ? true : false});
+                this.setState({ passMatch: (this.state.password+'') === (this.state.passwordRepeat+'')});
 
             });
         } else if (e.target.name === 'passwordRepeat') {
             this.setState({ passwordRepeat: e.target.value }, () => {
-                this.setState({ passMatch: validator.equals(this.state.passwordRepeat + '', this.state.password + '') });
+                this.setState({ passMatch:  (this.state.password+'') === (this.state.passwordRepeat+'') });
             });
         }
     }
