@@ -9,6 +9,7 @@ Node web app for managing your stock portfolio (client)
 
 - [Help](docs/HELP.md) - create-react-app user guide
 - [Components](docs/COMPONENTS.md) - more information about react components used
+- [Hours](https://docs.google.com/spreadsheets/d/1iS3zzA9LTFgh2s2CuXOBlqsfMP5bsVArIPT1dS3bYpY/edit?usp=sharing) - Working hours at Google Sheets
 
 
 ## Getting Started
