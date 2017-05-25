@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { Table, Progress, Modal, ModalHeader, ModalBody, ModalFooter, Button, FormGroup, Label, Col, Input } from 'reactstrap';
 import QuoteItem from './QuoteItem';
 import { addStockToUser } from '../../actions/dataActions';
-import validator from 'validator';
 
 class QuoteResults extends Component {
     constructor(props) {
@@ -40,7 +39,8 @@ class QuoteResults extends Component {
 
     handleChange(e) {
         this.setState({ modalValue: e.target.value }, () => {
-            this.setState({ modalValid: validator.isNumeric(this.state.modalValue) });
+            let numeric = /^[-+]?[0-9]+$/;
+            this.setState({ modalValid: numeric.test(this.state.modalValue) });
         });
     }
 
