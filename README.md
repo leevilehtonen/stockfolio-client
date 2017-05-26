@@ -1,4 +1,4 @@
-# stockfolio-client 
+# [stockfolio-client](https://stockfolio.leevilehtonen.com/) 
 [![Build Status](https://travis-ci.org/leevilehtonen/stockfolio-client.png?branch=master)](https://travis-ci.org/leevilehtonen/stockfolio-client)
 [![Dependency Status](https://david-dm.org/leevilehtonen/stockfolio-client.svg)](https://david-dm.org/leevilehtonen/stockfolio-client)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -7,6 +7,7 @@
 
 Node web app for managing your stock portfolio (client)
 
+- [Live demo](https://stockfolio.leevilehtonen.com/) - Live demo username: `tester`, password: `123456`
 - [Help](docs/HELP.md) - create-react-app user guide
 - [Components](docs/COMPONENTS.md) - more information about react components used
 - [Hours](https://docs.google.com/spreadsheets/d/1iS3zzA9LTFgh2s2CuXOBlqsfMP5bsVArIPT1dS3bYpY/edit?usp=sharing) - Working hours at Google Sheets
