@@ -12,6 +12,8 @@ Node web app for managing your stock portfolio (client)
 - [Components](docs/COMPONENTS.md) - more information about react components used
 - [Hours](https://docs.google.com/spreadsheets/d/1iS3zzA9LTFgh2s2CuXOBlqsfMP5bsVArIPT1dS3bYpY/edit?usp=sharing) - Working hours at Google Sheets
 
+**NOTE: As Yahoo updated their finance API to v10, there is currently some issues retrieving the data, Stockfolio is depending on [yahoo-finance](https://github.com/pilwon/node-yahoo-finance) as data provider and people are working to get the module functional.**
+
 
 ## Getting Started
 
