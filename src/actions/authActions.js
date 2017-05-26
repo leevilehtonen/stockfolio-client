@@ -1,5 +1,5 @@
 import * as types from './actionTypes';
-import { push } from 'react-router-redux';
+import { push, replace } from 'react-router-redux';
 import { loginApi, registerApi, validateToken } from '../utils/api';
 import { requestSuccessMessage, requestErrorMessage } from './msgActions';
 import { setAuthNav, setDefaultNav } from './mainActions';
@@ -42,7 +42,7 @@ export function loginUser(user) {
             .then((res) => {
                 if (res.success) {
                     dispatch(receiveLogin(res.token));
-                    dispatch(push('/user/stocks/overview'));
+                    dispatch(replace('/user/stocks/overview'));
                     dispatch(setAuthNav());
                     dispatch(requestSuccessMessage("Logged in"))
 
@@ -67,7 +67,7 @@ export function logoutUser() {
         dispatch(setDefaultNav());
         dispatch(requestLogout());
         dispatch(requestSuccessMessage('Logged out'));
-        dispatch(push('/'));
+        dispatch(replace('/'));
     }
 }
 
